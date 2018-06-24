@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface CategorieDao {
-	public boolean save(String categorie_id) throws SQLException;
+	public boolean save(String categorie) throws SQLException;
 	
 	public List<Categorie> findCategorieen(String query) throws SQLException;
 	

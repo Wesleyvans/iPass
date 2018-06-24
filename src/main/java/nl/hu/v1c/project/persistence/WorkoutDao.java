@@ -17,8 +17,5 @@ public interface WorkoutDao {
 	public List<Workout> findAll() throws SQLException;
 	
 	public Workout findByCode(int code) throws SQLException;
-	
-	public boolean Update(int code,  String titel, String beschrijving, int categorie) throws SQLException;
-	
-	public boolean Delete(int id) throws SQLException;
+
 }

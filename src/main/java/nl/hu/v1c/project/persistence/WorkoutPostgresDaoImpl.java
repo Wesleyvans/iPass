@@ -70,47 +70,5 @@ public class WorkoutPostgresDaoImpl extends PostgresBaseDao implements WorkoutDa
 		return null;
 	}
 
-	@Override
-	public boolean Update(int code, String titel, String beschrijving, int categorie) throws SQLException {
-		boolean result = false;
-		boolean workoutExists = findByCode(code) != null;
-			
-		if (workoutExists) {
-			String query = "UPDATE workout SET titel = '" + titel + "', beschrijving = '" + beschrijving +
-							"', categorie_id = " + categorie  + " WHERE workout_id = " + code + "";
-			
-			try (Connection con = super.getConnection()) {
-				
-				Statement stmt = con.createStatement();
-				if (stmt.executeUpdate(query) == 1) { // 1 row updated!
-					result = true;
-				}
-			} catch (SQLException sqle) {
-				sqle.printStackTrace();
-			}
-		}
-
-		return result;
-	}
-
-	@Override
-	public boolean Delete(int id) throws SQLException {
-		boolean result = false;
-		
-		String query = "DELETE FROM Workout WHERE workout_id = " + id + ""; 
-				
-		try (Connection con = super.getConnection()) {
-			
-			Statement stmt = con.createStatement();
-			if (stmt.executeUpdate(query) == 1) { // 1 row updated!
-				result = true;
-			}
-		} catch (SQLException sqle) {
-			sqle.printStackTrace();
-		}
-		
-		return result;
-	}
-
 
 }
