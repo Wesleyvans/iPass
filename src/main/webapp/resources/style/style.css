@@ -1,0 +1,199 @@
+html,* {
+	margin:0;
+	padding:0;
+}
+
+a {
+	color:#5092cb!important;
+}
+.loginbar {
+	height:40px;
+	background:#222222;
+	padding:8px;
+}
+
+.header {
+	width:100%;
+	height:250px;
+}
+
+.forumBar {
+	width:100%;
+	padding:3px;
+	background-color:white;
+	border-left:1px solid black;
+	border-right:1px solid black;
+	height:25px;
+}
+
+.forumBar div {
+	text-align:left;
+}
+
+.mainForum {
+	min-height:300px;
+	border-left: 1px solid #222222;
+	border-right: 1px solid #222222;
+}
+
+.navbar {
+	margin-bottom:0px!important;
+	border-radius:0px!important;
+}
+
+.navbar-inverse .navbar-nav>li>a, .navbar-inverse .navbar-brand {
+	color:white!important;
+}
+
+.navbar-inverse .navbar-nav>li>a:focus, .navbar-inverse .navbar-nav>li>a:hover, .navbar-inverse .navbar-nav>.active>a {
+    color: #5092cb!important;
+}
+
+.forumItem {
+	width:100%;
+	border-bottom:1px solid white;
+	height:60px;
+	padding:2px;
+}
+
+.personIcon {
+	width:50px;
+	height:50px;
+}
+
+.loginSpan {
+	float:right;
+	color:white;
+	margin-right:120px;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.loginSpan:hover {
+	color:#5092cb;
+	cursor:pointer;
+}
+
+.noWrap {
+	display: block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.titel {
+	font-weight:900;
+	font-size:13;
+	width:100%;
+	color:#de3732;
+}
+
+.beschrijving {
+	color:black;
+	height:40px;
+	font-size:10;
+	width:100%;
+}
+
+.reactie {
+	display:block;
+	height:20px;
+}
+
+.categorie {
+	display:block;
+	height:20px;
+}
+
+.createVak {
+	height:400px;
+	margin:0 auto;
+	border:1px solid black;
+	padding-top:25px;
+}
+
+.createRow {
+	margin-top:25px;
+}
+
+.noPad {
+	padding:0px!important;
+}
+
+h2 {
+	font-size: 20;
+    font-weight: 600;
+    color: #316fb0;
+    margin-bottom:0px!important;
+}
+
+
+.titleButton {
+	color:#5092cb;
+    border: none;
+    background-color: inherit;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.messageSpanSucces {
+	color:green;
+}
+
+.messageSpanFail {
+	color:red;
+}
+
+.workout-text {
+	padding:15px;
+}
+
+.cat {
+	padding:15px;
+}
+.oefeningTitel {
+	padding:15px;
+}
+
+.oefeningenWorkout {
+	padding:15px;
+}
+
+.oefeningObj {
+	float:left;
+	width:100px;
+}
+
+.modal-footer {
+	border:none!important;
+}
+
+.workout-titel {
+	color:#5092cb;
+}
+
+.workoutReacties {
+	padding:15px;
+}
+
+.modalheader {
+    margin-left: 15px;
+    font-size: 18px;
+    color: #79b4e1;
+}
+.reactiePersoon, .catPlaceholder, .workout-categorie {
+	color:#b60000;
+}
+
+.reageren {
+	padding:15px;
+}
+
+.oefeningCheckboxes {
+	padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.oefeningCheckboxes input {
+	margin-left:15px;
+}
+

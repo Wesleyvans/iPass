@@ -1,0 +1,116 @@
+<html>
+<head>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+	integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	crossorigin="anonymous"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+	crossorigin="anonymous"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="./resources/style/style.css">
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xs-12 loginbar"><span class="loginSpan"> <a href="/project/login.html"> Login </a> </span></div>
+		</div>
+		<div class="container">
+			<div class="row">
+				<img class="header" src="./resources/images/header.jpg">
+			</div>
+			<div class="row">
+				<div class="menuBar">
+					<nav class="navbar navbar-inverse">
+						<div class="container-fluid">
+							<div class="navbar-header">
+								<a class="navbar-brand" href="#">WorkoutBuddy</a>
+							</div>
+							<ul class="nav navbar-nav">
+								<li><a href="/project">Home</a></li>
+								<li><a href="/project/oefeningen.html">Oefeningen</a></li>
+								<li class="active" ><a href="/project/categorieen.html">Categorieën</a></li>
+								<li class="newworkout"> <a href="/project/newworkout.html"> New workout </a> </li>
+							</ul>
+						</div>
+					</nav>
+				</div>
+			</div>
+			<div class="row noPad">
+				<div class="col-md-2 filler"></div>
+				<div class="col-md-8 noPad">
+					<h2> Categorie aanmaken </h2>
+				</div>
+				<div class="col-md-2 filler"></div>
+			</div>
+			<div class="row createRow">
+				<div class="col-md-2 filler"></div>
+				<div class="col-md-8 createVak">
+					<div class="form-group">
+						<label for="categorieNaam">Categorie naam</label> <input
+							type="text" class="form-control" id="categorieNaam" placeholder="Enter Categorie">
+					</div>
+					<button type="button" class="insertCategorie btn btn-primary">Submit</button> <br>
+					
+					<span class="messageSpanSucces"></span>
+					<span class="messageSpanFail"></span>
+					
+				</div>
+				<div class="col-md-2 filler"></div>
+			</div>
+		</div>
+
+	</div>
+	
+		<script>
+		$(".insertCategorie").on("click", function() {
+			if (localStorage.getItem('token') != null) {
+				var token = localStorage.getItem('token');
+			} else {
+				var token = null;
+				alert("Login om uit te voeren");
+				window.location.replace("http://localhost:8888/project/login.html");
+			}
+			$.ajax({
+				url : '/project/restservices/workouts/insertCategorie',
+				type : 'POST',
+				beforeSend : function(xhr) {
+					xhr.setRequestHeader('Authorization', 'Bearer ' + token);
+					if(xhr.status === 403) {
+						alert("Sessie verlopen, log opnieuw in.")
+						window.location.replace("http://localhost:8888/project/login.html");
+					}
+				},
+				data : {
+					categorie : $("#categorieNaam").val()
+				},
+				success : function(response) {
+					if(response) {
+						$("#categorieNaam").val("");
+						$(".messageSpanSucces").html("Oefening invoeren gelukt");
+					}
+					else {
+						$(".messageSpanFail").html("Oefening invoeren mislukt");
+					}
+					
+				},
+			    error: function(xhr, textStatus, errorThrown) { 
+			        if(xhr.status === 403) {
+						alert("Sessie verlopen, log opnieuw in.")
+						window.location.replace("http://localhost:8888/project/login.html");
+			        }
+			        else {
+			        	alert("Er is iets mis gegaan, probeer het later opnieuw.")
+			        }
+			        
+			    } 
+			});
+		});
+	</script>
+</body>
+
+</html>
