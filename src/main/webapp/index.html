@@ -152,7 +152,7 @@
 			 window.location.replace("https://project-project.herokuapp.com/login.html");
 		 }
 	$.ajax({
-		 url: '/project/restservices/workouts/insertReactie',
+		 url: '/restservices/workouts/insertReactie',
 		 type: 'POST',
 		 beforeSend:  function(xhr){
 			 xhr.setRequestHeader('Authorization', 'Bearer ' + token);
