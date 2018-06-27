@@ -119,7 +119,7 @@ public class WorkoutResource {
 	@Path("insert")
 	@POST
 	@Produces("application/json")
-	@RolesAllowed("user")
+	@RolesAllowed({"admin","user"})
 	public Response saveWorkout(@Context SecurityContext sc, @FormParam("titel") String titel, @FormParam("beschrijving") String beschrijving,
 			@FormParam("categorie_id") int categorie_id) throws SQLException, JsonParseException, JsonMappingException, IOException {
 		WorkoutService service = ServiceProvider.getWorkoutService();
