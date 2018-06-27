@@ -120,7 +120,7 @@
 <script>
 	 $("body").on('click','.login', function(){
 			 $.ajax({
-				 url: '/project/restservices/authentication',
+				 url: '/restservices/authentication',
 				 type: 'POST',
 				 data: {
 					 username: $(".username").val() ,
@@ -130,7 +130,7 @@
 					 console.log(response.JWT);	
 					 localStorage.clear();
 					 localStorage.setItem('token', response.JWT);
-					 window.location.replace("http://localhost:8888/project/");
+					 window.location.replace("https://project-project.herokuapp.com");
 				 }
 			 });
 	 });

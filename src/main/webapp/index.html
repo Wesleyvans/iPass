@@ -56,7 +56,7 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-xs-12 loginbar">
-				<span class="loginSpan"> <a href="/project/login.html">
+				<span class="loginSpan"> <a href="/login.html">
 						Login </a>
 				</span>
 			</div>
@@ -74,9 +74,9 @@
 							</div>
 							<ul class="nav navbar-nav">
 								<li class="active"><a href="/project">Home</a></li>
-								<li><a href="/project/oefeningen.html">Oefeningen</a></li>
-								<li><a href="/project/categorieen.html">Categorieën</a></li>
-								<li class="newworkout"> <a href="/project/newworkout.html"> New workout </a> </li>
+								<li><a href="/oefeningen.html">Oefeningen</a></li>
+								<li><a href="/categorieen.html">Categorieën</a></li>
+								<li class="newworkout"> <a href="/newworkout.html"> New workout </a> </li>
 							</ul>
 						</div>
 					</nav>
@@ -104,7 +104,7 @@
 	}
 
 	function loadWorkoutResource(){
-		$.getJSON('http://localhost:8888/project/restservices/workouts', function(data){
+		$.getJSON('/restservices/workouts', function(data){
 			console.log(data);
  			for(let obj of data) {
 				$(".mainForum").append('<div class="col-md-12 forumItem" id="' + obj.workout_id + '"> <div class="col-md-2 col-xs-2 person"> <img  class="personIcon" src="./resources/images/personIcon.png"></div> <div class="col-md-6 col-xs-6">  <span class="titel noWrap"> <button class="titleButton" onclick="loadModal(this)"> ' + obj.titel + ' </button> </span> <span class="beschrijving noWrap"> ' + obj.beschrijving + '</span> </div> <div class="col-md-2 col-xs-2"> <span class="categorie">' + obj.categorie + '</span> </div> <div class="col-md-2 col-xs-2"> <span class="persoon">' + obj.persoon + '</span> </div></div>');
@@ -122,7 +122,7 @@
 		console.log(beschrijving);
 		var categorie = forumitem.find(".categorie").text();
 		// bijbehorende oefeningen
-		$.getJSON('http://localhost:8888/project/restservices/workouts/'+divid+'', function(data){
+		$.getJSON('/restservices/workouts/'+divid+'', function(data){
 			for(let obj of data){
 				$(".oefeningenWorkout").append('<span class="oefeningObj">' + obj.oefening + '</span>')
 			}
@@ -132,7 +132,7 @@
 		$(".workout-text").html(beschrijving);
 		$(".workout-categorie").html(categorie);
 		
-		$.getJSON('http://localhost:8888/project/restservices/workouts/reacties/'+divid+'', function(data){
+		$.getJSON('/restservices/workouts/reacties/'+divid+'', function(data){
 			for(let obj of data){
 				$(".workoutReacties").append('<span class="reactieObj"> - ' + obj.reactie + '</span> <span class="reactiePersoon"> Door : '+ obj.persoon +' </span> <br>')
 			}
@@ -149,7 +149,7 @@
 		 else {
 			 var token = null;
 			 alert("Login om uit te voeren");
-			 window.location.replace("http://localhost:8888/project/login.html");
+			 window.location.replace("https://project-project.herokuapp.com/login.html");
 		 }
 	$.ajax({
 		 url: '/project/restservices/workouts/insertReactie',
@@ -158,7 +158,7 @@
 			 xhr.setRequestHeader('Authorization', 'Bearer ' + token);
 				if(xhr.status === 403) {
 					alert("Sessie verlopen, log opnieuw in.")
-					window.location.replace("http://localhost:8888/project/login.html");
+					window.location.replace("https://project-project.herokuapp.com/login.html");
 				}
 		 },
 		 data: {
@@ -172,7 +172,7 @@
 	    error: function(xhr, textStatus, errorThrown) { 
 	        if(xhr.status === 403) {
 				alert("Sessie verlopen, log opnieuw in.")
-				window.location.replace("http://localhost:8888/project/login.html");
+				window.location.replace("https://project-project.herokuapp.com/login.html");
 	        }
 	        else {
 	        	alert("Er is iets mis gegaan, probeer het later opnieuw.")

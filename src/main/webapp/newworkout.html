@@ -17,7 +17,7 @@
 <body>
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-xs-12 loginbar"><span class="loginSpan"> <a href="/project/login.html"> Login </a> </span></div>
+			<div class="col-xs-12 loginbar"><span class="loginSpan"> <a href="/login.html"> Login </a> </span></div>
 		</div>
 		<div class="container">
 			<div class="row">
@@ -31,10 +31,10 @@
 								<a class="navbar-brand" href="#">WorkoutBuddy</a>
 							</div>
 							<ul class="nav navbar-nav">
-								<li><a href="/project">Home</a></li>
-								<li><a href="/project/oefeningen.html">Oefeningen</a></li>
-								<li ><a href="/project/categorieen.html">Categorieën</a></li>
-								<li class="active"> <a href="/project/newworkout.html"> New workout </a> </li>
+								<li><a href="/">Home</a></li>
+								<li><a href="/oefeningen.html">Oefeningen</a></li>
+								<li ><a href="/categorieen.html">Categorieën</a></li>
+								<li class="active"> <a href="/newworkout.html"> New workout </a> </li>
 							</ul>
 						</div>
 					</nav>
@@ -77,14 +77,14 @@
 
 <script>
 	$(document).ready(function(){
-		$.getJSON('http://localhost:8888/project/restservices/workouts/Categorieen', function(data){
+		$.getJSON('/restservices/workouts/Categorieen', function(data){
 			console.log(data);
 			for(let obj of data){
 				$(".categorieSelect").append($('<option class=""></option>').val(obj.categorie_id).html(obj.categorie));
 			}
 		});
 		
-		$.getJSON('http://localhost:8888/project/restservices/workouts/getAllOefeningen', function(data){
+		$.getJSON('/restservices/workouts/getAllOefeningen', function(data){
 			console.log(data);
 			for(let obj of data) {
 				$(".oefeningCheckboxes").append('<input type="checkbox" name="oefeningen" value="' + obj.oefening_id + '" /> '+ obj.oefening +'')
@@ -103,16 +103,16 @@
 				 else {
 					 var token = null;
 					 alert("Login om uit te voeren");
-					 window.location.replace("http://localhost:8888/project/login.html");
+					 window.location.replace("https://project-project.herokuapp.com/login.html");
 				 }
 			$.ajax({
-				 url: '/project/restservices/workouts/insert',
+				 url: '/restservices/workouts/insert',
 				 type: 'POST',
 				 beforeSend:  function(xhr){
 					 xhr.setRequestHeader('Authorization', 'Bearer ' + token);
 						if(xhr.status === 403) {
 							alert("Sessie verlopen, log opnieuw in.")
-							window.location.replace("http://localhost:8888/project/login.html");
+							window.location.replace("https://project-project.herokuapp.com/login.html");
 						}
 				 },
 				 data: {
@@ -124,13 +124,13 @@
 					 if(response){
 						oefeningenArray.forEach(function(arrayItem){
  							$.ajax({
-								 url: '/project/restservices/workouts/insertOefeningWorkout',
+								 url: '/restservices/workouts/insertOefeningWorkout',
 								 type: 'POST',
 								 beforeSend:  function(xhr){
 									 xhr.setRequestHeader('Authorization', 'Bearer ' + token);
 										if(xhr.status === 403) {
 											alert("Sessie verlopen, log opnieuw in.")
-											window.location.replace("http://localhost:8888/project/login.html");
+											window.location.replace("https://project-project.herokuapp.com/login.html");
 										}
 								 },
 								 data: {
@@ -145,7 +145,7 @@
 										$(".workoutBeschrijving").val("");
 										$(".workoutTitel").val("");
 										$("messageSpanSucces").text("Succesvol aangemaakt");
-										window.location.replace("http://localhost:8888/project/");
+										window.location.replace("https://project-project.herokuapp.com");
 									 }
 									 else {
 										 $("messageSpanFail").text("Er is iets mis gegaan met het aanmaken van de workout");

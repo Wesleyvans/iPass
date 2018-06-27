@@ -18,7 +18,7 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-xs-12 loginbar">
-				<span class="loginSpan"> <a href="/project/login.html">
+				<span class="loginSpan"> <a href="/login.html">
 						Login </a>
 				</span>
 			</div>
@@ -36,9 +36,9 @@
 							</div>
 							<ul class="nav navbar-nav">
 								<li><a href="/project">Home</a></li>
-								<li class="active"><a href="/project/oefeningen.html">Oefeningen</a></li>
-								<li><a href="/project/categorieen.html">Categorieën</a></li>
-								<li class="newworkout"><a href="/project/newworkout.html">
+								<li class="active"><a href="/oefeningen.html">Oefeningen</a></li>
+								<li><a href="/categorieen.html">Categorieën</a></li>
+								<li class="newworkout"><a href="/newworkout.html">
 										New workout </a></li>
 							</ul>
 						</div>
@@ -78,10 +78,10 @@
 			} else {
 				var token = null;
 				alert("Login om uit te voeren");
-				window.location.replace("http://localhost:8888/project/login.html");
+				window.location.replace("https://project-project.herokuapp.com/login.html");
 			}
 			$.ajax({
-				url : '/project/restservices/workouts/insertOefening',
+				url : '/restservices/workouts/insertOefening',
 				type : 'POST',
 				beforeSend : function(xhr) {
 					xhr.setRequestHeader('Authorization', 'Bearer ' + token);
@@ -102,7 +102,7 @@
 			    error: function(xhr, textStatus, errorThrown) { 
 			        if(xhr.status === 403) {
 						alert("Sessie verlopen, log opnieuw in.")
-						window.location.replace("http://localhost:8888/project/login.html");
+						window.location.replace("https://project-project.herokuapp.com/login.html");
 			        }
 			        else {
 			        	alert("Er is iets mis gegaan, probeer het later opnieuw.")
